@@ -17,7 +17,8 @@
   label {font-weight:bold;}
   input[type="text"], input[type="date"], textarea {width:100%; padding:8px; font-size:16px; margin-top:4px;}
   textarea {min-height:80px; resize:vertical;}
-  #submitBtn {width:100%; padding:12px; font-size:18px; margin-top:16px; border:none; border-radius:8px; background:#007bff; color:white;}
+  #submitBtn {width:100%; padding:12px; font-size:18px; margin-top:16px; border:none; border-radius:8px; background:#007bff; color:white; cursor:pointer;}
+  #submitBtn[disabled]{opacity:.65; cursor:not-allowed;}
 </style>
 </head>
 <body>
@@ -28,73 +29,237 @@
   <div class="title-small">HSE Section – ADEK Healthy Eating & Food Safety Policy</div>
 </div>
 
-<div class="section-box">
-  <label>Date:</label>
-  <input type="date"><br><br>
+<form id="checklistForm">
 
-  <label>Person in Charge (Canteen Supervisor / Food Handler):</label>
-  <input type="text" placeholder="Enter name"><br><br>
+  <div class="section-box">
+    <label>Date:</label>
+    <input type="date" name="date" required><br><br>
 
-  <label>Catering / Canteen Company:</label>
-  <input type="text" placeholder="Enter company name"><br><br>
+    <label>Person in Charge (Canteen Supervisor / Food Handler):</label>
+    <input type="text" name="personInCharge" placeholder="Enter name" required><br><br>
 
-  <label>Remarks / Notes:</label>
-  <textarea placeholder="Enter observations or actions required"></textarea>
-</div>
+    <label>Catering / Canteen Company:</label>
+    <input type="text" name="company" placeholder="Enter company name" required><br><br>
 
-<h2>Licenses, Documentation & Compliance</h2>
-<div class="item">Valid licenses displayed and not expired<select><option></option><option>Yes</option><option>No</option><option>N/A</option></select></div>
-<div class="item">Staff food-handling license available<select><option></option><option>Yes</option><option>No</option><option>N/A</option></select></div>
-<div class="item">Latest inspection reports available and no major NCs<select><option></option><option>Yes</option><option>No</option><option>N/A</option></select></div>
-<div class="item">Updated list of students' food allergies available<select><option></option><option>Yes</option><option>No</option><option>N/A</option></select></div>
+    <label>Remarks / Notes:</label>
+    <textarea name="remarks" placeholder="Enter observations or actions required"></textarea>
+  </div>
 
-<h2>Food Handlers – Health & Personal Hygiene</h2>
-<div class="item">Today's staff health condition is good<select><option></option><option>Yes</option><option>No</option><option>N/A</option></select></div>
-<div class="item">Food handlers medically fit with no symptoms<select><option></option><option>Yes</option><option>No</option><option>N/A</option></select></div>
-<div class="item">Handwashing facilities available and working<select><option></option><option>Yes</option><option>No</option><option>N/A</option></select></div>
-<div class="item">Staff uniform, hairnets, gloves used<select><option></option><option>Yes</option><option>No</option><option>N/A</option></select></div>
+  <h2>Licenses, Documentation & Compliance</h2>
+  <div class="item">Valid licenses displayed and not expired
+    <select name="licensesDisplayed" required>
+      <option value="">Select</option><option>Yes</option><option>No</option><option>N/A</option>
+    </select>
+  </div>
+  <div class="item">Staff food-handling license available
+    <select name="staffFoodHandlingLicense" required>
+      <option value="">Select</option><option>Yes</option><option>No</option><option>N/A</option>
+    </select>
+  </div>
+  <div class="item">Latest inspection reports available and no major NCs
+    <select name="latestInspectionReports" required>
+      <option value="">Select</option><option>Yes</option><option>No</option><option>N/A</option>
+    </select>
+  </div>
+  <div class="item">Updated list of students' food allergies available
+    <select name="allergiesListAvailable" required>
+      <option value="">Select</option><option>Yes</option><option>No</option><option>N/A</option>
+    </select>
+  </div>
 
-<h2>Food Delivery & Transportation</h2>
-<div class="item">Food delivery vehicle meets hygiene and safety requirements<select><option></option><option>Yes</option><option>No</option><option>N/A</option></select></div>
+  <h2>Food Handlers – Health & Personal Hygiene</h2>
+  <div class="item">Today's staff health condition is good
+    <select name="staffHealthGood" required>
+      <option value="">Select</option><option>Yes</option><option>No</option><option>N/A</option>
+    </select>
+  </div>
+  <div class="item">Food handlers medically fit with no symptoms
+    <select name="handlersMedicallyFit" required>
+      <option value="">Select</option><option>Yes</option><option>No</option><option>N/A</option>
+    </select>
+  </div>
+  <div class="item">Handwashing facilities available and working
+    <select name="handwashFacilitiesWorking" required>
+      <option value="">Select</option><option>Yes</option><option>No</option><option>N/A</option>
+    </select>
+  </div>
+  <div class="item">Staff uniform, hairnets, gloves used
+    <select name="uniformHairnetsGloves" required>
+      <option value="">Select</option><option>Yes</option><option>No</option><option>N/A</option>
+    </select>
+  </div>
 
-<h2>Food Storage & Temperature Control</h2>
-<div class="item">Fridges <= 5°C<select><option></option><option>Yes</option><option>No</option><option>N/A</option></select></div>
-<div class="item">Freezers <= -18°C<select><option></option><option>Yes</option><option>No</option><option>N/A</option></select></div>
-<div class="item">Hot holding >= 60°C<select><option></option><option>Yes</option><option>No</option><option>N/A</option></select></div>
-<div class="item">No food held between 5–60°C for more than 2 hours<select><option></option><option>Yes</option><option>No</option><option>N/A</option></select></div>
-<div class="item">All food in date; FIFO followed<select><option></option><option>Yes</option><option>No</option><option>N/A</option></select></div>
-<div class="item">Fridge temperature (°C)<input type="number" step="0.1"></div>
-<div class="item">Hot food temperature (°C)<input type="number" step="0.1"></div>
+  <h2>Food Delivery & Transportation</h2>
+  <div class="item">Food delivery vehicle meets hygiene and safety requirements
+    <select name="deliveryVehicleHygiene" required>
+      <option value="">Select</option><option>Yes</option><option>No</option><option>N/A</option>
+    </select>
+  </div>
 
-<h2>Preparation, Handling & Cross Contamination</h2>
-<div class="item">Safe cooking and reheating temperatures<select><option></option><option>Yes</option><option>No</option><option>N/A</option></select></div>
+  <h2>Food Storage & Temperature Control</h2>
+  <div class="item">Fridges &lt;= 5°C
+    <select name="fridgesLe5" required>
+      <option value="">Select</option><option>Yes</option><option>No</option><option>N/A</option>
+    </select>
+  </div>
+  <div class="item">Freezers &lt;= -18°C
+    <select name="freezersLeNeg18" required>
+      <option value="">Select</option><option>Yes</option><option>No</option><option>N/A</option>
+    </select>
+  </div>
+  <div class="item">Hot holding &gt;= 60°C
+    <select name="hotHoldingGe60" required>
+      <option value="">Select</option><option>Yes</option><option>No</option><option>N/A</option>
+    </select>
+  </div>
+  <div class="item">No food held between 5–60°C for more than 2 hours
+    <select name="noFoodDangerZoneOver2h" required>
+      <option value="">Select</option><option>Yes</option><option>No</option><option>N/A</option>
+    </select>
+  </div>
+  <div class="item">All food in date; FIFO followed
+    <select name="foodInDateFIFO" required>
+      <option value="">Select</option><option>Yes</option><option>No</option><option>N/A</option>
+    </select>
+  </div>
+  <div class="item">Fridge temperature (°C)
+    <input type="number" name="fridgeTempC" step="0.1" inputmode="decimal" placeholder="e.g. 4.2">
+  </div>
+  <div class="item">Hot food temperature (°C)
+    <input type="number" name="hotFoodTempC" step="0.1" inputmode="decimal" placeholder="e.g. 63.5">
+  </div>
 
-<h2>Display, Service Area & Student Safety</h2>
-<div class="item">Counters clean, no spills<select><option></option><option>Yes</option><option>No</option><option>N/A</option></select></div>
-<div class="item">Food protected (covers, no direct handling)<select><option></option><option>Yes</option><option>No</option><option>N/A</option></select></div>
-<div class="item">Teachers or TAs present while students are eating<select><option></option><option>Yes</option><option>No</option><option>N/A</option></select></div>
-<div class="item">Students can wash or sanitise hands before eating<select><option></option><option>Yes</option><option>No</option><option>N/A</option></select></div>
+  <h2>Preparation, Handling & Cross Contamination</h2>
+  <div class="item">Safe cooking and reheating temperatures
+    <select name="safeCookingReheatingTemps" required>
+      <option value="">Select</option><option>Yes</option><option>No</option><option>N/A</option>
+    </select>
+  </div>
 
-<h2>Cleaning, Waste Management & Pest Control</h2>
-<div class="item">Cleaning schedule implemented<select><option></option><option>Yes</option><option>No</option><option>N/A</option></select></div>
-<div class="item">Waste bins covered, not overflowing<select><option></option><option>Yes</option><option>No</option><option>N/A</option></select></div>
-<div class="item">No pests; pest control records available<select><option></option><option>Yes</option><option>No</option><option>N/A</option></select></div>
-<div class="item">Grease traps and drains clean and unblocked<select><option></option><option>Yes</option><option>No</option><option>N/A</option></select></div>
+  <h2>Display, Service Area & Student Safety</h2>
+  <div class="item">Counters clean, no spills
+    <select name="countersCleanNoSpills" required>
+      <option value="">Select</option><option>Yes</option><option>No</option><option>N/A</option>
+    </select>
+  </div>
+  <div class="item">Food protected (covers, no direct handling)
+    <select name="foodProtectedNoDirectHandling" required>
+      <option value="">Select</option><option>Yes</option><option>No</option><option>N/A</option>
+    </select>
+  </div>
+  <div class="item">Teachers or TAs present while students are eating
+    <select name="teachersPresentWhileEating" required>
+      <option value="">Select</option><option>Yes</option><option>No</option><option>N/A</option>
+    </select>
+  </div>
+  <div class="item">Students can wash or sanitise hands before eating
+    <select name="studentsWashHandsBeforeEating" required>
+      <option value="">Select</option><option>Yes</option><option>No</option><option>N/A</option>
+    </select>
+  </div>
 
-<h2>Emergency Preparedness & Equipment</h2>
-<div class="item">Fire extinguisher valid and accessible<select><option></option><option>Yes</option><option>No</option><option>N/A</option></select></div>
-<div class="item">First aid kit available and stocked<select><option></option><option>Yes</option><option>No</option><option>N/A</option></select></div>
+  <h2>Cleaning, Waste Management & Pest Control</h2>
+  <div class="item">Cleaning schedule implemented
+    <select name="cleaningScheduleImplemented" required>
+      <option value="">Select</option><option>Yes</option><option>No</option><option>N/A</option>
+    </select>
+  </div>
+  <div class="item">Waste bins covered, not overflowing
+    <select name="wasteBinsCoveredNotOverflowing" required>
+      <option value="">Select</option><option>Yes</option><option>No</option><option>N/A</option>
+    </select>
+  </div>
+  <div class="item">No pests; pest control records available
+    <select name="noPestsPestControlRecords" required>
+      <option value="">Select</option><option>Yes</option><option>No</option><option>N/A</option>
+    </select>
+  </div>
+  <div class="item">Grease traps and drains clean and unblocked
+    <select name="greaseTrapsDrainsClean" required>
+      <option value="">Select</option><option>Yes</option><option>No</option><option>N/A</option>
+    </select>
+  </div>
 
-<button id="submitBtn">SUBMIT</button>
+  <h2>Emergency Preparedness & Equipment</h2>
+  <div class="item">Fire extinguisher valid and accessible
+    <select name="fireExtinguisherValidAccessible" required>
+      <option value="">Select</option><option>Yes</option><option>No</option><option>N/A</option>
+    </select>
+  </div>
+  <div class="item">First aid kit available and stocked
+    <select name="firstAidKitAvailableStocked" required>
+      <option value="">Select</option><option>Yes</option><option>No</option><option>N/A</option>
+    </select>
+  </div>
+
+  <button id="submitBtn" type="submit">SUBMIT</button>
+
+</form>
 
 <p style="font-size: 12px; text-align:center; margin-top:8px; color:#555;">
   created by FLIS HSE Officer : Jelil
 </p>
 
 <script>
-document.getElementById('submitBtn').addEventListener('click', function() {
-  alert('Form submitted (demo version).');
-});
+  const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbx3XFbxNh3iuAElpN1o--QIUZIUAXgJtZ_EKc6Xn7SNErMi4-RlME1emD3SA5d8gplA/exec";
+  const RECEIVER_EMAIL = "partygifts850@gmail.com";
+
+  const form = document.getElementById("checklistForm");
+  const submitBtn = document.getElementById("submitBtn");
+
+  function collectFormData() {
+    const data = {};
+    const fields = form.querySelectorAll("input, select, textarea");
+
+    fields.forEach(el => {
+      if (!el.name) return;
+
+      if (el.type === "checkbox") {
+        data[el.name] = el.checked ? "Yes" : "No";
+      } else if (el.type === "radio") {
+        if (el.checked) data[el.name] = el.value;
+      } else {
+        data[el.name] = (el.value || "").trim();
+      }
+    });
+
+    data.receiverEmail = RECEIVER_EMAIL;
+    return data;
+  }
+
+  form.addEventListener("submit", async (ev) => {
+    ev.preventDefault();
+
+    // Basic browser validation for required fields
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "SENDING...";
+
+    try {
+      const res = await fetch(WEB_APP_URL, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(collectFormData())
+      });
+
+      const txt = (await res.text()).trim();
+      if (txt === "OK") {
+        alert("Sent successfully ✅");
+        form.reset();
+      } else {
+        alert("Server replied: " + txt);
+      }
+    } catch (e) {
+      alert("Send failed: " + e);
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "SUBMIT";
+    }
+  });
 </script>
 
 </body>
